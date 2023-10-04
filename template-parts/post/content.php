@@ -32,7 +32,7 @@
       the_content();
 
       wp_link_pages(array(
-        'before' => '<div class="page-links">' . esc_html__('Pages:', 'herobiz'),
+        'before' => '<div class="page-links">' . esc_html__('Pages:', 'basictheme'),
         'after' => '</div>',
       ));
     endif;
