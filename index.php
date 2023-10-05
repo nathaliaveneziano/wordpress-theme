@@ -3,16 +3,31 @@
 /**
  * 
  */
-
 get_header();
+?>
 
-get_search_form();
+<div id="primary" class="content-area">
+  <main id="main" class="site-main">
+    <?php
+    if (have_posts()) :
+      while (have_posts()) :
+        the_post();
+        get_template_part('template-parts/post/content');
+      endwhile;
 
-if (have_posts()) :
-  while (have_posts()) :
-    the_post();
-    get_template_part('template-parts/post/content');
-  endwhile;
-endif;
+      echo paginate_links(array(
+        'prev_text' => esc_html__('Prev', 'basictheme'),
+        'next_text' => esc_html__('Next', 'basictheme'),
+      ));
+    else :
+      get_template_part('template-parts/page/content', 'none');
+    endif;
+    ?>
+  </main>
 
+  <?php get_sidebar(); ?>
+</div>
+
+
+<?php
 get_footer();
